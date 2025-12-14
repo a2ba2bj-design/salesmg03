@@ -15,14 +15,18 @@ function LoginForm() {
   const [message, setMessage] = useState('')
   const [otpSent, setOtpSent] = useState(false)
   const [userID,setUserID]=useState(0)
-   const [catid ,setCatID ]=useState("") 
-    const [cats ,setCats ]=useState([])
+  const [catid ,setCatID ]=useState("") 
+  const [cats ,setCats ]=useState([])
+
+
   const handleSendOtp = async () => {
-    const formData = new FormData()
-    formData.append('phone', phone)
+
+     const formData = new FormData()
+     formData.append('phone', phone)
      formData.append('catid', catid)
     setLoading(true)
     setMessage('')
+    
     try {
       const result = await createUser(formData)
       setUserID(result.userID)
@@ -34,6 +38,8 @@ function LoginForm() {
       setLoading(false)
     }
   }
+
+
  useEffect(() => {
       
       axios.get(`${BASE_URL}/enum`,{params:{groupname:'enterType',},})
