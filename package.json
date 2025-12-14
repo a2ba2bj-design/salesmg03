@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.18.0",
+    "@prisma/client": "^6.17.1",
     "@radix-ui/react-select": "^2.2.6",
     "ag-grid-community": "^34.1.1",
     "ag-grid-react": "^34.1.1",
@@ -17,7 +17,6 @@
     "jose": "^6.0.12",
     "lucide-react": "^0.542.0",
     "next": "15.4.1",
-    "prisma": "^6.17.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sqlserver": "^0.0.2-security"
@@ -29,6 +28,7 @@
     "@types/react": "19.1.8",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
+    "prisma": "^6.17.1",
     "tailwindcss": "^4"
   }
 }

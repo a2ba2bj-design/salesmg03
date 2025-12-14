@@ -42,3 +42,7 @@ next-env.d.ts
 
 
 /public/uploads/signatures
+
+/src/generated/prisma
+
+/src/generated/prisma
