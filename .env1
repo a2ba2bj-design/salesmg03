@@ -1,0 +1,24 @@
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="sqlserver://127.0.0.1:1433;database=evaluation;user=SA;password=eval;encrypt=DANGER_PLAINTEXT"
+#DATABASE_URL="mysql://eval:eval@localhost:3306/evaluation"
+SESSION_SECRET="MIICyjCCAbICAQAwgYQxCzAJBgNVBAYTAklSMQ8wDQYDVQQIDAZ0ZWhyYW4xDzAN
+BgNVBAcMBnRlaHJhbjEMMAoGA1UECgwDZXNmMQswCQYDVQQLDAJpdDEPMA0GA1UE
+AwwGbW9oc2VuMScwJQYJKoZIhvcNAQkBFhhtb2hzZW5yb2luZmFyZEBnbWFpbC5j
+b20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDgdOGWFkRDxHV0WWym
+U2zD9OFGMb+NSi1HCZ24EV8pWcGA6uVv4+f612+lTsKkjSPBuD6Q2cf3MuHuP65b
+A7zULLLCcVtqNme8H1S9u9w+JblMnq0LiuUTX1B2rCLFuHC94YoOMUx+WHb82f8D
+1znXnT7QaqypxoFIwnn05Dgv0heLiQKWHqi1GcGJwLesUETBmdos52rPeBpnerR/
+q+38cXMDS7ddDPrJvlpC7+0OKsm2mfG2vYuJXgyXEyvaRWh83Z7FOa/JMVxpuVrj
+B2JxwMtZlaBAfee5teYX3qB1QzUh+sezMSlZTWHoYg0SP7I4txM4h4kdg3YCLsMJ
+FniTAgMBAAGgADANBgkqhkiG9w0BAQsFAAOCAQEALxkVOrDIBFKieBhzItxM9nDe
+i8pKUCKwCxYezH+gb6k0wHZyvA+g9ZX+82GFltPwKmMvIAzpaL0cDGRDspfcuRU2
+lN/xlEs2Ky0R4mMbw21sT1iaWn0pG90747FV88hlvN1lhanEcxnfXLWvzVBCm1R1
+japXIWI3PUsstpjShmvhjAmENZoB0f59RT0wWgbg1Gsw0xEKXG8QMlmKn1fSVVmK
+YRoec/2qwyev5zS6W1aCe6yBbFlejWRZYERERxlis4H0hKzsrgl4g7tK/9PnZe3F
+hDh2ecZ8ziWxFNXjAMXKCn1/ja9Xo6F706nfv+w+TV4ddpDzm9dek68oZhE68w==
+"
