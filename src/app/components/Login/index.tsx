@@ -26,7 +26,7 @@ function LoginForm() {
      formData.append('catid', catid)
     setLoading(true)
     setMessage('')
-    
+
     try {
       const result = await createUser(formData)
       setUserID(result.userID)
@@ -42,7 +42,7 @@ function LoginForm() {
 
  useEffect(() => {
       
-      axios.get(`${BASE_URL}/enum`,{params:{groupname:'enterType',},})
+      axios.get(`${BASE_URL}/tblvPost`,{params:{NameFull:'enterType',},})
       .then(province =>setCats(province.data)).catch(err=>console.log(err));
      
     }, []);

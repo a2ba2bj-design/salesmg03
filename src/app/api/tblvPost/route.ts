@@ -3,36 +3,51 @@ import { PrismaClient, Prisma } from '../../../../src/generated/prisma/client'
 const prisma = new PrismaClient();
 
 // تابع کمکی برای مدیریت خطا
-function handlePrismaError(error: Prisma.PrismaClientKnownRequestError): { message: string; status: number } {
+function isPrismaError(error: unknown): error is 
+  | Prisma.PrismaClientKnownRequestError
+  | Prisma.PrismaClientUnknownRequestError
+  | Prisma.PrismaClientRustPanicError
+  | Prisma.PrismaClientInitializationError
+  | Prisma.PrismaClientValidationError {
+  return error instanceof Prisma.PrismaClientKnownRequestError ||
+    error instanceof Prisma.PrismaClientUnknownRequestError ||
+    error instanceof Prisma.PrismaClientRustPanicError ||
+    error instanceof Prisma.PrismaClientInitializationError ||
+    error instanceof Prisma.PrismaClientValidationError;
+}
+
+function handlePrismaError(error: unknown): { message: string; status: number } {
   console.error('Database error:', error);
   
-  if (error instanceof Prisma.PrismaClientKnownRequestError) {
-    switch (error.code) {
-      case 'P2002':
-        return { message: 'رکورد تکراری وجود دارد', status: 409 };
-      case 'P2025':
-        return { message: 'رکورد مورد نظر یافت نشد', status: 404 };
-      case 'P2003':
-        return { message: 'خطای ارجاع خارجی', status: 400 };
-      default:
-        return { message: `خطای پایگاه داده: ${error.code}`, status: 400 };
+  if (isPrismaError(error)) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      switch (error.code) {
+        case 'P2002':
+          return { message: 'رکورد تکراری وجود دارد', status: 409 };
+        case 'P2025':
+          return { message: 'رکورد مورد نظر یافت نشد', status: 404 };
+        case 'P2003':
+          return { message: 'خطای ارجاع خارجی', status: 400 };
+        default:
+          return { message: `خطای پایگاه داده: ${error.code}`, status: 400 };
+      }
     }
-  }
 
-  if (error instanceof Prisma.PrismaClientUnknownRequestError) {
-    return { message: 'خطای ناشناخته پایگاه داده', status: 500 };
-  }
+    if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+      return { message: 'خطای ناشناخته پایگاه داده', status: 500 };
+    }
 
-  if (error instanceof Prisma.PrismaClientRustPanicError) {
-    return { message: 'خطای سیستمی پایگاه داده', status: 500 };
-  }
+    if (error instanceof Prisma.PrismaClientRustPanicError) {
+      return { message: 'خطای سیستمی پایگاه داده', status: 500 };
+    }
 
-  if (error instanceof Prisma.PrismaClientInitializationError) {
-    return { message: 'خطای اتصال به پایگاه داده', status: 500 };
-  }
+    if (error instanceof Prisma.PrismaClientInitializationError) {
+      return { message: 'خطای اتصال به پایگاه داده', status: 500 };
+    }
 
-  if (error instanceof Prisma.PrismaClientValidationError) {
-    return { message: 'داده‌های ارسالی معتبر نیستند', status: 400 };
+    if (error instanceof Prisma.PrismaClientValidationError) {
+      return { message: 'داده‌های ارسالی معتبر نیستند', status: 400 };
+    }
   }
 
   if (error instanceof Error) {
@@ -141,15 +156,15 @@ export async function GET(request: NextRequest) {
             }
           }
         },
-        tblvMemberPost: {
-          include: {
-            tblvMember: {
-              select: {
-                UserName: true
-              }
-            }
-          }
-        }
+       /// tblvMemberPost: {
+         // include: {
+          //  tblvMember: {
+           //   select: {
+             //   UserName: true
+           //   }
+           // }
+          //}
+       // }
       }
     });
 

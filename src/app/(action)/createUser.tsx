@@ -1,6 +1,7 @@
 'use server'
 import { PrismaClient } from '../../generated/prisma/client'
 const prisma = new PrismaClient()
+
 export async function createUser(formData: FormData) {
  const phone = formData.get('phone').toString() 
  const catid = parseInt(formData.get('catid').toString() )
