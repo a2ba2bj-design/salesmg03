@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import WEB from "../../public/WEB.png"
+import WEB from "../../public/WEB.jpeg"
 import SMbg from "../../public/SMbg.png"
 import Menu from "./components/Menu";
 import Footer from "./components/Footer"
